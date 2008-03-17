@@ -33,6 +33,7 @@ WriteMakefile(
     LIBS              => ["-L$tcc_dir/lib -ltcc"],
     DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
     INC               => "-I. -I$tcc_dir/include",
+    LICENSE           => 'LGPL',
     # Un-comment this if you add C files to link with later:
     # OBJECT            => '$(O_FILES)', # link all the C files too
 );

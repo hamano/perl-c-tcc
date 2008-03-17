@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
 #
-# $Id: TCC.pm,v 1.3 2008-03-17 09:51:45 hamano Exp $
+# $Id: TCC.pm,v 1.4 2008-03-17 14:12:01 hamano Exp $
 
 package C::TCC;
 
@@ -34,15 +34,32 @@ our @ISA = qw(Exporter);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
-
+TCC_OUTPUT_MEMORY
+TCC_OUTPUT_EXE
+TCC_OUTPUT_DLL
+TCC_OUTPUT_OBJ
+TCC_OUTPUT_PREPROCESS
+TCC_OUTPUT_FORMAT_ELF
+TCC_OUTPUT_FORMAT_BINARY
+TCC_OUTPUT_FORMAT_COFF
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-our @EXPORT = qw(
-);
+our @EXPORT = ( @{ $EXPORT_TAGS{'all'} });
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
+
+use constant {
+    TCC_OUTPUT_MEMORY     => 0,
+    TCC_OUTPUT_EXE        => 1,
+    TCC_OUTPUT_DLL        => 2,
+    TCC_OUTPUT_OBJ        => 3,
+    TCC_OUTPUT_PREPROCESS => 4,
+    TCC_OUTPUT_FORMAT_ELF    => 0,
+    TCC_OUTPUT_FORMAT_BINARY => 1,
+    TCC_OUTPUT_FORMAT_COFF   => 2,
+};
 
 require XSLoader;
 XSLoader::load('C::TCC', $VERSION);
@@ -57,13 +74,13 @@ sub new
     bless $self, $class;
 
     $self->{state} = tcc_new();
-
     return $self;
 }
 
 sub DESTROY
 {
     my $self = shift;
+    print "DESTROY\n";
     tcc_delete($self->{state});
 }
 
@@ -108,6 +125,42 @@ sub compile_string
     my $self = shift;
     my $buf = shift;
     tcc_compile_string($self->{state}, $buf);
+}
+
+sub set_output_type
+{
+    my $self = shift;
+    my $output_type = shift;
+    tcc_set_output_type($self->{state}, $output_type);
+}
+
+sub add_library_path
+{
+    my $self = shift;
+    my $pathname = shift;
+    tcc_add_library_path($self->{state}, $pathname);
+}
+
+sub add_library
+{
+    my $self = shift;
+    my $libraryname = shift;
+    tcc_add_library($self->{state}, $libraryname);
+}
+
+sub add_symbol
+{
+    my $self = shift;
+    my $name = shift;
+    my $value = shift;
+    tcc_add_symbol($self->{state}, $name, $value);
+}
+
+sub output_file
+{
+    my $self = shift;
+    my $filename = shift;
+    tcc_output_file($self->{state}, $filename);
 }
 
 sub run
