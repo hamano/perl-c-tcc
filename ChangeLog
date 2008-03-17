@@ -1,0 +1,8 @@
+2008-03-17  Tsukasa Hamano <hamano@klab.org>
+
+        * Added methods(add_include_path, add_sysinclude_path,
+        undefine_symbol, define_symbol)
+        * Release 0.02
+
+2008-03-17  Tsukasa Hamano <hamano@klab.org>
+        * first released version 0.01

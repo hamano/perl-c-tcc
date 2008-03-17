@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
 #
-# $Id: TCC.pm,v 1.1 2008-03-17 04:04:17 hamano Exp $
+# $Id: TCC.pm,v 1.2 2008-03-17 09:46:09 hamano Exp $
 
 package C::TCC;
 
@@ -42,7 +42,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
 );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 require XSLoader;
 XSLoader::load('C::TCC', $VERSION);
@@ -72,6 +72,28 @@ sub add_include_path
     my $self = shift;
     my $pathname = shift;
     tcc_add_include_path($self->{state}, $pathname);
+}
+
+sub add_sysinclude_path
+{
+    my $self = shift;
+    my $pathname = shift;
+    tcc_add_include_path($self->{state}, $pathname);
+}
+
+sub define_symbol
+{
+    my $self = shift;
+    my $sym = shift;
+    my $value = shift;
+    tcc_define_symbol($self->{state}, $sym, $value);
+}
+
+sub undefine_symbol
+{
+    my $self = shift;
+    my $sym = shift;
+    tcc_undefine_symbol($self->{state}, $sym);
 }
 
 sub add_file
