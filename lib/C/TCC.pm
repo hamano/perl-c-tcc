@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
 #
-# $Id: TCC.pm,v 1.2 2008-03-17 09:46:09 hamano Exp $
+# $Id: TCC.pm,v 1.3 2008-03-17 09:51:45 hamano Exp $
 
 package C::TCC;
 
@@ -128,7 +128,7 @@ C::TCC - Perl extension for TCC
 =head1 SYNOPSIS
 
   use C::TCC;
-  my $tcc = TCC->new();
+  my $tcc = C::TCC->new();
   $tcc->compile_string('int main(){printf("Hello World.\n"); return 0;}');
   $tcc->run();
 
@@ -149,14 +149,30 @@ Create a new TCC compilation context.
 
 =over 4
 
-=item C<compile_string>
+=item C<add_include_path>
 
-Compile a string containing a C source. Return non zero if error.
+Add include path
+
+=item C<tcc_add_sysinclude_path>
+
+Add in system include path
+
+=item C<tcc_define_symbol>
+
+Define preprocessor symbol 'sym'. Can put optional value
+
+=item C<tcc_undefine_symbol>
+
+Undefine preprocess symbol 'sym'
 
 =item C<add_file>
 
 Add a file (either a C file, dll, an object, a library or an ld
 script). Return -1 if error.
+
+=item C<compile_string>
+
+Compile a string containing a C source. Return non zero if error.
 
 =item C<run>
 
