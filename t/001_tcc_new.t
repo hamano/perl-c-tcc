@@ -14,5 +14,4 @@ BEGIN { use_ok('C::TCC') };
 # its man page ( perldoc Test::More ) for help writing this test script.
 
 my $tcc = C::TCC->new();
-isa_ok ($tcc, 'C::TCC');
-
+isa_ok($tcc, 'C::TCC');

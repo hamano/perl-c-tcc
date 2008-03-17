@@ -15,6 +15,6 @@ BEGIN { use_ok('C::TCC') };
 
 my $tcc = C::TCC->new();
 $ret = $tcc->add_file('t/hello.c');
-ok ($ret == 0);
+ok($ret == 0);
 $ret = $tcc->run();
-ok ($ret == 0);
+ok($ret == 0);

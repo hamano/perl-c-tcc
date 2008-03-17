@@ -5,7 +5,7 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 3;
+use Test::More tests => 4;
 BEGIN { use_ok('C::TCC') };
 
 #########################
@@ -14,7 +14,15 @@ BEGIN { use_ok('C::TCC') };
 # its man page ( perldoc Test::More ) for help writing this test script.
 
 my $tcc = C::TCC->new();
-$ret = $tcc->compile_string('int main(){printf("Hello World.\n"); return 0;}');
-ok($ret == 0);
+$ret = $tcc->add_include_path("t");
+ok ($ret == 0);
+$ret = $tcc->compile_string('
+#include "hello.h"
+int main()
+{
+    hello();
+    return 0;
+}');
+ok ($ret == 0);
 $ret = $tcc->run();
-ok($ret == 0);
+ok ($ret == 0);

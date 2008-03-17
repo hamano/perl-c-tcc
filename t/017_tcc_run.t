@@ -39,7 +39,15 @@ ok($ret == 3);
 undef $tcc;
 
 $tcc = C::TCC->new();
-$tcc->compile_string('int main(int argc, char *argv[]){int i, ret=0; for(i=0; i<argc; i++){ret+=atoi(argv[i]);}return ret;}');
+$tcc->compile_string('
+int main(int argc, char *argv[])
+{
+    int i, ret=0;
+    for(i=0; i<argc; i++){
+        ret+=atoi(argv[i]);
+    }
+    return ret;
+}');
 $ret = $tcc->run('1', '2', '3');
 ok($ret == 6);
 undef $tcc;
