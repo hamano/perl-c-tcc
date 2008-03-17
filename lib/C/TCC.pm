@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
 #
-# $Id: TCC.pm,v 1.4 2008-03-17 14:12:01 hamano Exp $
+# $Id: TCC.pm,v 1.5 2008-03-17 14:21:29 hamano Exp $
 
 package C::TCC;
 
@@ -206,15 +206,15 @@ Create a new TCC compilation context.
 
 Add include path
 
-=item C<tcc_add_sysinclude_path>
+=item C<add_sysinclude_path>
 
 Add in system include path
 
-=item C<tcc_define_symbol>
+=item C<define_symbol>
 
 Define preprocessor symbol 'sym'. Can put optional value
 
-=item C<tcc_undefine_symbol>
+=item C<undefine_symbol>
 
 Undefine preprocess symbol 'sym'
 
@@ -230,7 +230,7 @@ Compile a string containing a C source. Return non zero if error.
 =item C<run>
 
 link and run main() function and return its value. DO NOT call
-tcc_relocate() before.
+relocate() before.
 
 =head1 SEE ALSO
 
