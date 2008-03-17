@@ -1,5 +1,3 @@
-.cvsignore
-C-TCC-0.01.tar.gz
 ChangeLog
 lib/C/TCC.pm
 LICENSE
@@ -17,9 +15,5 @@ t/011_tcc_compile_string.t
 t/017_tcc_run.t
 t/hello.c
 t/hello.h
-TCC.bs
-TCC.c
-TCC.o
 TCC.xs
-test.pl
 typemap
