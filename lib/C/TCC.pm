@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
 #
-# $Id: TCC.pm,v 1.7 2008-03-18 06:17:33 hamano Exp $
+# $Id: TCC.pm,v 1.6 2008-03-18 06:14:10 hamano Exp $
 
 package C::TCC;
 
@@ -205,20 +205,6 @@ script). Return -1 if error.
 =item C<compile_string>
 
 Compile a string containing a C source. Return non zero if error.
-
-=item C<set_output_type>
-
-set output type. MUST BE CALLED before any compilation
-TCC_OUTPUT_MEMORY
-TCC_OUTPUT_EXE
-TCC_OUTPUT_DLL
-TCC_OUTPUT_OBJ
-TCC_OUTPUT_PREPROCESS
-
-=item C<output_file>
-
-output an executable, library or object file. DO NOT call
-relocate() method before.
 
 =item C<run>
 
