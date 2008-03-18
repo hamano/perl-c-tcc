@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
 #
-# $Id: TCC.pm,v 1.5 2008-03-17 14:21:29 hamano Exp $
+# $Id: TCC.pm,v 1.7 2008-03-18 06:17:33 hamano Exp $
 
 package C::TCC;
 
@@ -80,7 +80,6 @@ sub new
 sub DESTROY
 {
     my $self = shift;
-    print "DESTROY\n";
     tcc_delete($self->{state});
 }
 
@@ -134,27 +133,7 @@ sub set_output_type
     tcc_set_output_type($self->{state}, $output_type);
 }
 
-sub add_library_path
-{
-    my $self = shift;
-    my $pathname = shift;
-    tcc_add_library_path($self->{state}, $pathname);
-}
-
-sub add_library
-{
-    my $self = shift;
-    my $libraryname = shift;
-    tcc_add_library($self->{state}, $libraryname);
-}
-
-sub add_symbol
-{
-    my $self = shift;
-    my $name = shift;
-    my $value = shift;
-    tcc_add_symbol($self->{state}, $name, $value);
-}
+#
 
 sub output_file
 {
@@ -176,7 +155,7 @@ __END__
 
 =head1 NAME
 
-C::TCC - Perl extension for TCC
+C::TCC - An interface to the TCC(Tiny C Compiler)
 
 =head1 SYNOPSIS
 
@@ -226,6 +205,20 @@ script). Return -1 if error.
 =item C<compile_string>
 
 Compile a string containing a C source. Return non zero if error.
+
+=item C<set_output_type>
+
+set output type. MUST BE CALLED before any compilation
+TCC_OUTPUT_MEMORY
+TCC_OUTPUT_EXE
+TCC_OUTPUT_DLL
+TCC_OUTPUT_OBJ
+TCC_OUTPUT_PREPROCESS
+
+=item C<output_file>
+
+output an executable, library or object file. DO NOT call
+relocate() method before.
 
 =item C<run>
 

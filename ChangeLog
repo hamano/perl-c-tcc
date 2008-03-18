@@ -1,3 +1,8 @@
+2008-03-18  Tsukasa Hamano  <hamano@klab.org>
+
+	* Added methods(set_output_type, set_output_file)
+	* Release 0.03
+
 2008-03-17  Tsukasa Hamano  <hamano@klab.org>
 
 	* Added methods(add_include_path, add_sysinclude_path,
