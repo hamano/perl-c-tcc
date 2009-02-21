@@ -13,8 +13,10 @@ t/009_tcc_undefine_symbol.t
 t/010_tcc_add_file.t.t
 t/011_tcc_compile_string.t
 t/012_tcc_set_output_type.t
-t/016_tcc_set_output_file.t
+t/016_tcc_output_file.t
 t/017_tcc_run.t
+t/pod.t
+t/pod-coverage.t
 t/hello.c
 t/hello.h
 TCC.xs

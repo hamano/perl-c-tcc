@@ -83,6 +83,12 @@ sub DESTROY
     tcc_delete($self->{state});
 }
 
+sub enable_debug
+{
+    my $self = shift;
+    tcc_enable_debug($self->{state});
+}
+
 sub add_include_path
 {
     my $self = shift;
@@ -169,45 +175,31 @@ C::TCC - An interface to the TCC(Tiny C Compiler)
 The perl module TCC provides an interface to the TCC(Tiny C Compiler)
 See http://fabrice.bellard.free.fr/tcc/ for more information on TCC.
 
-=head1 CONSTRUCTOR
-
-=over 4
-
-=item C<new>
-
-Create a new TCC compilation context.
-
 =head1 METHODS
 
-=over 4
+=head2 new
+Create a new TCC compilation context.
 
-=item C<add_include_path>
-
+=head2 add_include_path
 Add include path
 
-=item C<add_sysinclude_path>
-
+=head2 add_sysinclude_path
 Add in system include path
 
-=item C<define_symbol>
-
+=head2 define_symbol
 Define preprocessor symbol 'sym'. Can put optional value
 
-=item C<undefine_symbol>
-
+=head2 undefine_symbol
 Undefine preprocess symbol 'sym'
 
-=item C<add_file>
-
+=head2 add_file
 Add a file (either a C file, dll, an object, a library or an ld
 script). Return -1 if error.
 
-=item C<compile_string>
-
+=head2 compile_string
 Compile a string containing a C source. Return non zero if error.
 
-=item C<set_output_type>
-
+=head2 set_output_type
 set output type. MUST BE CALLED before any compilation
 
 TCC_OUTPUT_MEMORY
@@ -220,15 +212,14 @@ TCC_OUTPUT_OBJ
 
 TCC_OUTPUT_PREPROCESS
 
-=item C<output_file>
-
+=head2 output_file
 output an executable, library or object file. DO NOT call
 relocate() method before.
 
-=item C<run>
-
+=head2 run
 link and run main() function and return its value. DO NOT call
 relocate() before.
+
 
 =head1 SEE ALSO
 
