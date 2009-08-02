@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 Tsukasa Hamano <hamano@klab.org>
+ * Copyright (C) 2008 Tsukasa Hamano <hamano@cpan.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -15,7 +15,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
  *
- * $Id: TCC.xs,v 1.1 2008-03-17 04:04:17 hamano Exp $
+ * $Id: TCC.xs,v 1.1.1.1 2008-03-17 04:04:17 hamano Exp $
  */
 
 #include "EXTERN.h"
@@ -52,7 +52,7 @@ int
 tcc_add_symbol(s, name, val)
 	TCCState *	s
 	const char *	name
-	unsigned long	val
+	void *	val
 
 int
 tcc_add_sysinclude_path(s, pathname)
@@ -78,10 +78,9 @@ tcc_delete(s)
 #tcc_enable_debug(s)
 #	TCCState *	s
 
-int
-tcc_get_symbol(s, pval, name)
+void *
+tcc_get_symbol(s, name)
 	TCCState *	s
-	unsigned long *	pval
 	const char *	name
 
 TCCState *
@@ -93,8 +92,9 @@ tcc_output_file(s, filename)
 	const char *	filename
 
 int
-tcc_relocate(s)
+tcc_relocate(s, ptr)
 	TCCState *	s
+    void *  ptr
 
 int
 tcc_run(s, args)

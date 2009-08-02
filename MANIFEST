@@ -5,6 +5,7 @@ Makefile.PL
 MANIFEST
 ppport.h
 README
+ex/hello.pl
 t/001_tcc_new.t
 t/006_tcc_add_include_path.t
 t/007_tcc_add_sysinclude_path.t
@@ -21,3 +22,4 @@ t/hello.c
 t/hello.h
 TCC.xs
 typemap
+META.yml                                 Module meta-data (added by MakeMaker)
