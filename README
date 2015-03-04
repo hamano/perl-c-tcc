@@ -1,4 +1,4 @@
-TCC version 0.01
+TCC version 0.05
 ================
 
 This perl module provides an interface to the TCC(Tiny C Compiler)
@@ -24,7 +24,7 @@ This module requires these other modules and libraries:
 COPYRIGHT AND LICENCE
 ---------------------
 
-Copyright (C) 2008 Tsukasa Hamano <hamano@perl.org>
+Copyright (C) 2008 HAMANO Tsukasa <code@cuspy.org>
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
